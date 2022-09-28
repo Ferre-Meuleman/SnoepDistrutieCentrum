@@ -1,0 +1,554 @@
+;
+;======================================================
+; GSD-file for PROFIBUS-DP Coupler/SPC3
+; Manufacturer: Beckhoff Automation GmbH
+;               Eiserstr. 5
+;               33415 Verl (Germany)
+;               Tel.: +49(0)5246/963-0
+; stock-nr.:  BK3120
+; state:      01.22.09
+;
+;
+;----------------------- TwinCAT ----------------------
+;
+Tc_KBus_supp = 1                                ; Bus-Coupler
+Tc_Plc_supp = 0                                 ; Bus-Controller
+Tc_Firmware_Flashable = 1                       ; 
+Tc_ComplexTerminals = 1                         ;
+Tc_Comment = "Bus-Coupler, 12MBaud"             ;
+Tc_BitmapFile = "BK_EcoP.bmp"
+Tc_VendorBitmapFile = "Beckhoff.bmp"
+;
+;------------------------- DP -------------------------
+;
+#Profibus_DP
+;
+;------------------ PrmText-Definitionen --------------
+;
+PrmText = 1
+Text(0) = "is not active"
+Text(1) = "is active"
+EndPrmText
+
+PrmText = 6
+Text(0) = "manual reset"
+Text(1) = "automatic reset"
+EndPrmText
+
+PrmText = 8
+Text(0) = "in process image"
+Text(1) = "not in process image"
+EndPrmText
+
+PrmText = 11
+Text(0) = "INTEL"
+Text(1) = "MOTOROLA"
+EndPrmText
+		  
+PrmText = 12
+Text(0) = "Synchron"
+Text(1) = "FreeRun"
+EndPrmText
+
+PrmText = 13
+Text(0) = "KBus-Cycle stopped"
+Text(1) = "KBus-outputs to 0"
+Text(2) = "KBus-outputs remain equal"
+EndPrmText
+
+PrmText = 14
+Text(0) = "leave DataExchange"
+Text(1) = "DP-inputs to 0"
+Text(2) = "DP-inputs remain equal"
+EndPrmText
+
+;
+;------------- ExtUserPrmData-Definitionen --------------
+;
+ExtUserPrmData = 1 "DPV1-Services (Class 1)"
+Bit(7) 0 0-1
+Prm_Text_Ref = 1
+EndExtUserPrmData
+
+ExtUserPrmData = 6 "Behavior in case of KBus-Error"
+Bit(0) 0 0-1
+Prm_Text_Ref = 6
+EndExtUserPrmData
+
+ExtUserPrmData = 7 "Terminal-Diagnosis"
+Bit(1) 0 0-1
+Prm_Text_Ref = 1
+EndExtUserPrmData
+
+ExtUserPrmData = 8 "DiagData of digital terminals"
+Bit(4) 0 0-1
+Prm_Text_Ref = 8
+EndExtUserPrmData
+
+ExtUserPrmData = 11 "Data-Format"
+Bit(3) 1 0-1
+Prm_Text_Ref = 11
+EndExtUserPrmData
+
+ExtUserPrmData = 12 "KBus-Mode"
+Bit(6) 1 0-1
+Prm_Text_Ref = 12
+EndExtUserPrmData
+
+ExtUserPrmData = 13 "Reaction on DP-Error"
+BitArea(0-1) 0 0-2
+Prm_Text_Ref = 13
+EndExtUserPrmData
+
+ExtUserPrmData = 14 "Reaction on KBus-Error"
+BitArea(2-3) 0 0-2
+Prm_Text_Ref = 14
+EndExtUserPrmData
+
+ExtUserPrmData = 86 "Fast FreeRun-Mode"
+Bit(4) 0 0-1
+Prm_Text_Ref = 1
+EndExtUserPrmData
+
+ExtUserPrmData = 185 "DPV1-Response-Watchdog"
+Unsigned8 0 0-255
+EndExtUserPrmData
+
+;
+;---------------------- DP-General ---------------------
+;
+GSD_Revision = 3
+Vendor_Name = "BECKHOFF"
+Model_Name = "BK3120"
+Revision = "Revision 4.08"
+Ident_Number = 0xBECE
+Protocol_Ident = 0
+Station_Type = 0
+FMS_supp = 0
+Hardware_Release = "01"
+Software_Release = "B7"
+
+9.6_supp = 1
+19.2_supp = 1
+93.75_supp = 1
+187.5_supp = 1
+500_supp = 1
+1.5M_supp = 1
+3M_supp = 1
+6M_supp = 1
+12M_supp = 1
+MaxTsdr_9.6 = 60
+MaxTsdr_19.2 = 60
+MaxTsdr_93.75 = 60
+MaxTsdr_187.5 = 60
+MaxTsdr_500 = 100
+MaxTsdr_1.5M = 150
+MaxTsdr_3M = 250
+MaxTsdr_6M = 350
+MaxTsdr_12M = 550
+Redundancy = 0
+Repeater_Ctrl_Sig = 1
+24V_Pins = 0
+
+Implementation_Type = "SPC3"
+Bitmap_Device = "busklemn"
+Bitmap_Diag = "busklems"
+;
+;-------------------- DP-Slave -----------------------
+;
+Freeze_Mode_supp = 1
+Sync_Mode_supp = 1
+Auto_Baud_supp = 1
+Set_Slave_Add_supp = 0
+Min_Slave_Intervall = 1
+Modular_Station = 1
+Max_Module = 244
+Max_Input_Len = 244
+Max_Output_Len = 244
+Max_Data_Len = 256
+
+Fail_Safe = 1
+Max_Diag_Data_Len = 64
+Modul_Offset = 0
+Slave_Family = 3
+;
+;---------------------- DPV1 -------------------------
+;
+DPV1_Slave = 1
+C1_Read_Write_supp = 1
+C1_Max_Data_Len = 48
+C1_Response_Timeout = 1000
+C2_Read_Write_supp = 1
+C2_Max_Data_Len = 48
+C2_Response_Timeout = 1000
+C2_Max_Count_Channels = 1
+Max_Initiate_PDU_Length = 52
+;
+;------------------- UserPrmData ---------------------
+;
+Max_User_Prm_Data_Len = 57
+
+Ext_User_Prm_Data_Const(0) = 0x00
+Ext_User_Prm_Data_Ref(0) = 1
+Ext_User_Prm_Data_Const(1) = 0x00
+Ext_User_Prm_Data_Const(2) = 0x08
+Ext_User_Prm_Data_Const(3) = 0x00
+Ext_User_Prm_Data_Const(4) = 0x00
+Ext_User_Prm_Data_Const(5) = 0x00
+Ext_User_Prm_Data_Ref(6) = 185
+Ext_User_Prm_Data_Const(7) = 0x40
+Ext_User_Prm_Data_Ref(7) = 6
+Ext_User_Prm_Data_Ref(7) = 7
+Ext_User_Prm_Data_Ref(7) = 8
+Ext_User_Prm_Data_Const(8) = 0x00
+Ext_User_Prm_Data_Const(9) = 0x23
+Ext_User_Prm_Data_Ref(9) = 11
+Ext_User_Prm_Data_Ref(9) = 12
+Ext_User_Prm_Data_Ref(9) = 86
+Ext_User_Prm_Data_Const(10) = 0x00
+Ext_User_Prm_Data_Ref(10) = 13
+Ext_User_Prm_Data_Ref(10) = 14
+Ext_User_Prm_Data_Const(11) = 0x40
+Ext_User_Prm_Data_Const(12) = 0x00
+Ext_User_Prm_Data_Const(13) = 0x00,0x00
+Ext_User_Prm_Data_Const(15) = 0x00,0x00,0x00,0x00,0x00
+Ext_User_Prm_Data_Const(20) = 0x00,0x00,0x00,0x00,0x00
+Ext_User_Prm_Data_Const(25) = 0x00,0x00,0x00,0x00,0x00
+Ext_User_Prm_Data_Const(30) = 0x00
+;
+;-------------------- Modules ------------------------
+;
+Module = "KL1501" 0xB4
+7
+EndModule
+Module = "KL1512" 0xB5
+355
+EndModule
+Module = "KL2502" 0xB5
+10
+EndModule
+Module = "KL2521" 0xB2
+12
+EndModule
+Module = "KL2531" 0xB4
+341
+EndModule
+Module = "KL2531-1000" 0xB8
+360
+EndModule
+Module = "KL2532" 0xB5
+351
+EndModule
+Module = "KL2535" 0xB5
+352
+EndModule
+Module = "KL2541" 0xB4
+342
+EndModule
+Module = "KL2541-1000" 0xB8
+361
+EndModule
+Module = "KL2542" 0xB5
+353
+EndModule
+Module = "KL2545" 0xB5
+354
+EndModule
+Module = "KL2552" 0xB5
+367
+EndModule
+Module = "KL2692" 0xB2
+347
+EndModule
+Module = "KL2751 compact (16Out)" 0x60
+357
+EndModule
+Module = "KL2751 complex (24Out/24In)" 0xB2
+358
+EndModule
+Module = "KL2791 compact (16Out)" 0x60
+365
+EndModule
+Module = "KL2791 complex (24Out/24In)" 0xB2
+366
+EndModule
+Module = "KL3351 compact (16In)" 0x51
+19
+EndModule
+Module = "KL3351 complex (24In/Out)" 0xB5
+20
+EndModule
+Module = "KL3356" 0xB5
+22
+EndModule
+Module = "KL3361" 0xB4
+23
+EndModule
+Module = "KL3362" 0xB9
+322
+EndModule
+Module = "KL3403" 0xB8
+323
+EndModule
+Module = "KL/KM3xx1 compact (16In)" 0x50
+335
+EndModule
+Module = "KL/KM3xx1 complex (24In/24Out)" 0xB2
+336
+EndModule
+Module = "KL/KM3xx2 compact (16In)" 0x51
+24
+EndModule
+Module = "KL/KM3xx2 complex (24In/24Out)" 0xB5
+25
+EndModule
+Module = "KL3xx4 compact (16In)" 0x53
+27
+EndModule
+Module = "KL3xx4 complex (24In/24Out)" 0xBB
+28
+EndModule
+Module = "KL3xx8 compact (16In)" 0x53, 0x53
+343
+EndModule
+Module = "KL3xx8 complex (24In/24Out)" 0xBB, 0xBB
+344
+EndModule
+Module = "KL4xx1 compact (16Out)" 0x60
+338
+EndModule
+Module = "KL4xx1 complex (24Out/24In)" 0xB2
+339
+EndModule
+Module = "KL4xx2 compact (16Out)" 0x61
+35
+EndModule
+Module = "KL4xx2 complex (24Out/24In)" 0xB5
+36
+EndModule
+Module = "KL4xx4 compact (16Out)" 0x63
+38
+EndModule
+Module = "KL4xx4 complex (24Out/24In)" 0xBB
+39
+EndModule
+Module = "KL4xx8 compact (16Out)" 0x63, 0x63
+345
+EndModule
+Module = "KL4xx8 complex (24Out/24In)" 0xBB, 0xBB
+346
+EndModule
+Module = "KL4494 compact (16Out/16In)" 0xB3
+348
+EndModule
+Module = "KL4494 complex (24Out/24In)" 0xB5
+349
+EndModule
+Module = "KL5001 compact (32In)" 0x93
+42
+EndModule
+Module = "KL5001 complex (48In/48Out)" 0xB5
+43
+EndModule
+Module = "KL5051" 0xB5
+48
+EndModule
+Module = "KL5101" 0xB5
+50
+EndModule
+Module = "KL5111" 0xB5
+52
+EndModule
+Module = "KL5121" 0xB5
+54
+EndModule
+Module = "KL5151" 0xB4
+56
+EndModule
+Module = "KL5152/KL5151-0050" 0xB9
+363
+EndModule
+Module = "KL5302" 0xB5
+58
+EndModule
+Module = "KL6001" 0xB5
+61
+EndModule
+Module = "KL6011" 0xB5
+68
+EndModule
+Module = "KL6021" 0xB5
+75
+EndModule
+Module = "KL6021-0023" 0xBB
+368
+EndModule
+Module = "KL6031" 0xC0,0x97,0x97
+350
+EndModule
+Module = "KL6041" 0xC0,0x97,0x97
+356
+EndModule
+Module = "KL6051 compact (32In/32Out)" 0xB3
+81
+EndModule
+Module = "KL6051 complex (48In/48Out)" 0xB5
+82
+EndModule
+Module = "KL6061" 0xBA
+83
+EndModule
+Module = "KL6201 (PAB 6)" 0x35
+84
+EndModule
+Module = "KL6201 (PRM PAB 6)" 0xF2,0x35
+85
+EndModule
+Module = "KL6201 (PAB 16)" 0x3F
+86
+EndModule
+Module = "KL6201 (PRM PAB 16)" 0xF2,0x3F
+87
+EndModule
+Module = "KL6201 (PAB 32)" 0xC0,0x1F,0x1F
+154
+EndModule
+Module = "KL6201 (PRM PAB 32)" 0xF2,0xC0,0x1F,0x1F
+156
+EndModule
+Module = "KL6401" 0xC0,0xD1,0xD1
+91
+EndModule
+Module = "KL6811" 0xB2
+88
+EndModule
+Module = "KM6551" 0xBB
+362
+EndModule
+Module = "KL8001" 0xBB
+89
+EndModule
+Module = "KL8610 - 1 channel" 0xB2
+333
+EndModule
+Module = "KL8610 - 2 channels" 0xB5
+334
+EndModule
+Module = "KL8610 - 3 channels" 0xB8
+324
+EndModule
+Module = "KL8610 - 4 channels" 0xBB
+325
+EndModule
+Module = "KL8610 - 5 channels" 0xBE
+326
+EndModule
+Module = "KL8610 - 6 channels" 0xF8
+327
+EndModule
+Module = "KL8610 - 7 channels" 0xFA
+328
+EndModule
+Module = "KL8610 - 8 channels" 0xFB
+329
+EndModule
+Module = "8 Bit digital inputs" 0x10
+111
+EndModule
+Module = "16 Bit digital inputs" 0x11
+112
+EndModule
+Module = "24 Bit digital inputs" 0x12
+113
+EndModule
+Module = "32 Bit digital inputs" 0x13
+114
+EndModule
+Module = "40 Bit digital inputs" 0x14
+115
+EndModule
+Module = "48 Bit digital inputs" 0x15
+116
+EndModule
+Module = "56 Bit digital inputs" 0x16
+117
+EndModule
+Module = "64 Bit digital inputs" 0x17
+118
+EndModule
+Module = "72 Bit digital inputs" 0x18
+119
+EndModule
+Module = "80 Bit digital inputs" 0x19
+120
+EndModule
+Module = "88 Bit digital inputs" 0x1A
+121
+EndModule
+Module = "96 Bit digital inputs" 0x1B
+122
+EndModule
+Module = "104 Bit digital inputs" 0x1C
+123
+EndModule
+Module = "112 Bit digital inputs" 0x1D
+124
+EndModule
+Module = "120 Bit digital inputs" 0x1E
+125
+EndModule
+Module = "128 Bit digital inputs" 0x1F
+126
+EndModule
+Module = "8 Bit digital outputs" 0x20
+128
+EndModule
+Module = "16 Bit digital outputs" 0x21
+129
+EndModule
+Module = "24 Bit digital outputs" 0x22
+130
+EndModule
+Module = "32 Bit digital outputs" 0x23
+131
+EndModule
+Module = "40 Bit digital outputs" 0x24
+132
+EndModule
+Module = "48 Bit digital outputs" 0x25
+133
+EndModule
+Module = "56 Bit digital outputs" 0x26
+134
+EndModule
+Module = "64 Bit digital outputs" 0x27
+135
+EndModule
+Module = "72 Bit digital outputs" 0x28
+136
+EndModule
+Module = "80 Bit digital outputs" 0x29
+137
+EndModule
+Module = "88 Bit digital outputs" 0x2A
+138
+EndModule
+Module = "96 Bit digital outputs" 0x2B
+139
+EndModule
+Module = "104 Bit digital outputs" 0x2C
+140
+EndModule
+Module = "112 Bit digital outputs" 0x2D
+141
+EndModule
+Module = "120 Bit digital outputs" 0x2E
+142
+EndModule
+Module = "128 Bit digital outputs" 0x2F
+143
+EndModule
+
+
+
+
