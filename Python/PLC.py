@@ -1,7 +1,8 @@
 #importeer de nodige onderdlen uit de extensies (door niet heel de extensie te laden werkt de codering sneller)
 from snap7 import client
 from json import dump, loads
-from os import getcwd, listdir
+from os import getcwd
+from Funcitons import *
 
 #defineer de logfile de orders map 
 path_orders = getcwd() + "\Json\orders"
@@ -61,30 +62,6 @@ def Write_PLC(TrakcingID_New):
             a += 1
     pass
 
-#Fucnctie om te dedecteren welke orders niet zijn gestart
-def ListOfUnwriten():
-    ID_list = []
-    a = 1
-    x = int(directory(str(path_orders), ".json"))
-    while a <= x:
-        file = open(path_orders + f"\order{a}.json", "r")
-        data = loads(file.read())
-        if "" == data["CardID"]:
-            ID_list.append(data["TrackingID"])
-            a += 1
-        else:
-            a += 1
-    
-    return ID_list
-
-#Fucntie voor aantal files in de map orders te vinden
-def directory(path_a, extension):
-    list_dir = listdir(path_a)
-    count = 0
-    for file in list_dir:
-        if file.endswith(extension):
-            count += 1
-    return count
 
 #Als status van de plc actief is ...
 state = PLC.get_cpu_state()
