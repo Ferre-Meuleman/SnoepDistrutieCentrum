@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap-grid.min.css" integrity="sha512-q0LpKnEKG/pAf1qi1SAyX0lCNnrlJDjAvsyaygu07x8OF4CEOpQhBnYiFW6YDUnOOcyAEiEYlV4S9vEc6akTEw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/tracking.css" />
+    <link rel="icon" href="img/logo.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/uji0pkp.css">
+    <title>GIP 6em</title>
+</head>
+
+<body>
+    <div id="top">
+        <header class="">
+            <h2 id="logo"><a href="index.html"><span>GIP</span> 6EM</a></h2>
+            <div class="icon">
+                <a href="Order.html" class="icons">
+                    <img src="./img/cart-svgrepo-com.svg" alt="orderingicon" id="iconss">
+                </a>
+                <a href="Tracking.html" class="icons">
+                    <img src="./img/magnifying-glass-svgrepo-com.svg" alt="trackingicon" id="iconsss">
+                </a>
+            </div>
+        </header>
+    </div>
+
+    <div id="main" class="container d-flex align-content-space-between justify-content-end flex-column">
+        <main id="box" class="container d-flex flex-column">
+            <div id="orderid">
+                <p class="col" id="enter"><strong>Enter order id</strong></p>
+                <form class="input-group-field col" onsubmit="return validateForm()" action="/Tracking" method="post">
+                    <input type="text" id="search" name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+            <div id="info">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td id="infor"><strong>
+                                informatie
+                            </strong></td>
+                            <td>
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="pre"><strong>TrackingID: </strong></td>
+                            <td>
+                                hXQHUw
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="pre"><strong>Firstname:</strong></td>
+                            <td>
+                                Ferre
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="pre"><strong>Lastname:</strong></td>
+                            <td>
+                                Meuleman
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="pre"><strong>Rood:</strong></td>
+                            <td>
+                                1
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="pre"><strong>Groen:</strong></td>
+                            <td>
+                                1
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="pre"><strong>Blauw:</strong></td>
+                            <td>
+                                1
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="pre"><strong>Card ID:</strong></td>
+                            <td>
+                                123456789
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="progress">
+                <div id="progress-bar" style="width: 0%;"></div>
+                <ul id="progress-num">
+                    <li id="Step0" class="step active"><img src="./img/20906959591580594409.svg" alt=""></li>
+                    <li id="Step1" class="step"><img src="./img/186834117516376536136724.svg" alt=""></li>
+                    <li id="Step2" class="step"><img src="./img/4255838301571183075.svg" alt=""></li>
+                    <li id="Step3" class="step"><img src="./img/17528597761543238908.svg" alt=""></li>
+                    <li id="Step4" class="step"><img src="./img/5152465001634472862.svg" alt=""></li>
+                </ul>
+            </div>
+            <p hidden id="Location">
+                Location
+            </p>
+        </main>
+    </div>
+    <background>
+        <div id="green"></div>
+        <div id="purple"></div>
+        <div id="yellow"></div>
+        <div id="pink"></div>
+        <div id="orange"></div>
+    </background>
+    <script>
+        function progressbar() {
+            var Location = Number(document.getElementById("Location").innerHTML);
+            console.log(Location);
+            if (Location == 0) {
+                document.getElementById("progress-bar").style.width = "0%";
+                document.getElementById("Step0").className = "step active";
+                document.getElementById("Step1").className = "step";
+                document.getElementById("Step2").className = "step";
+                document.getElementById("Step3").className = "step";
+                document.getElementById("Step4").className = "step";
+            } else
+            if (Location == 1) {
+                document.getElementById("progress-bar").style.width = "25%";
+                document.getElementById("Step0").className = "step active";
+                document.getElementById("Step1").className = "step active";
+                document.getElementById("Step2").className = "step";
+                document.getElementById("Step3").className = "step";
+                document.getElementById("Step4").className = "step";
+            } else if (Location == 2) {
+                document.getElementById("progress-bar").style.width = "50%";
+                document.getElementById("Step0").className = "step active";
+                document.getElementById("Step1").className = "step active";
+                document.getElementById("Step2").className = "step active";
+                document.getElementById("Step3").className = "step";
+                document.getElementById("Step4").className = "step";
+            } else if (Location == 3) {
+                document.getElementById("progress-bar").style.width = "75%";
+                document.getElementById("Step0").className = "step active";
+                document.getElementById("Step1").className = "step active";
+                document.getElementById("Step2").className = "step active";
+                document.getElementById("Step3").className = "step active";
+                document.getElementById("Step4").className = "step";
+            } else if (Location == 4) {
+                document.getElementById("progress-bar").style.width = "100%";
+                document.getElementById("Step0").className = "step active";
+                document.getElementById("Step1").className = "step active";
+                document.getElementById("Step2").className = "step active";
+                document.getElementById("Step3").className = "step active";
+                document.getElementById("Step4").className = "step active";
+            }
+
+
+
+        }
+
+        function validateForm() {
+            var Search = document.getElementById("search").value;
+            if (Search == "") {
+                alert("U heeft geen Tracking id upgegeven")
+                return false;
+            } else {
+                return true;
+
+            }
+        }
+    </script>
+</body>
+
+</html>
