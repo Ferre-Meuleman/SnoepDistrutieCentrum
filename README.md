@@ -1,6 +1,6 @@
 # C++ [more like .ino files :)]
 
-C++ becouse arduion run's on a version of c++
+C++ becouse Arduino run's on a version of c++
 
 ## ~/Arduino/Arduino.ino
 
