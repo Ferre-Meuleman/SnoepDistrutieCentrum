@@ -1,17 +1,32 @@
-# Snoep distributiecentrum
-Eindwerk van het middelbaar gemaakt in 
-TSM Mechelen
-2021-2022 6EM
-## Doel van het project
-Aan de hand van RFID je bestelling snoep kunnen volgen doorheen het snoepdistributiecentrum en deze vervolgens weergeven op een web pagina.
-## Logica
-1. Gebruiker plaatst bestelling op website   
-2. Word opgelsagen in database (json map)  
-3. Indien plc opgestart en klaar voor bestelling word deze geupload naar de plc
-4. Plc start bestelling (groot of klein bakje)
-5. indine bakje voor 1ste RFID module kom
-6. Tag word leeg gemaakt en nieuwe bestelling uit database word hierop weg geschreven
-7. Website word geupdate dat de bestelling in het procces zit en de tag id + locatie word geupdate op plc
-8. Besteling komt voorbij 2de rfid module 
-9. Website word geupdate met de locatie + locatie word geupdate op plc
-10. ...
+# C++ [more like .ino files :)]
+
+C++ becouse arduion run's on a version of c++
+
+## ~/Arduino/Arduino.ino
+
+I used .ino file to program my arduino to comunicate with the RFID modules and[] to the central system(main.py ran on pc).
+For the communication between the Arduino and the RFID modules im using SPI.
+
+SPI input:
+
+- When a new order is dedected and what the tag id is of that case for the order
+- What module dedected a order and what the orders data is
+
+SPI output:
+
+- The trachking id linked to the new order
+
+For the communication between the Arduio and the central System imusing Serial.
+Serial input:
+
+- The tracking id linked to the new order
+
+Serial output:
+
+- if the arduino is started up correctly sends a signal
+- When a new order is dedected and what the tag id is of that case for the order
+- When an order is detected in the procces and where
+
+## ~/MFRC522/...
+
+This folder is the modified library for the Arduino MFRC522 RFID modules. The only thing i changed is the the Communication frequenctie to use the spi communication over longer distances (±10m).
