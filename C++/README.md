@@ -1,41 +1,32 @@
-# Python
+# C++ [more like .ino files :)]
 
-This part is made with python due to my previouse experience in python and the posiabliltyes to comunicate with Arduino and PLC.
+C++ becouse Arduino run's on a version of c++
 
-## Main.py
+## ~/Arduino/Arduino.ino
 
-Usses threading to run file Aruino.py and PLC.py simultaneously.
+I used .ino file to program my arduino to comunicate with the RFID modules and[] to the central system(main.py ran on pc).
+For the communication between the Arduino and the RFID modules im using SPI.
 
-## Arduino.py
+SPI input:
 
-Comunicates between the Arduino and the Json database using serial communication methode. It also communicates a little bit between the database and the plc using Snap7-python comunication methode.
-
-Serial input:
-
-- Checks if the arduino is started up correctly
 - When a new order is dedected and what the tag id is of that case for the order
-- When an order is detected in the procces and where
+- What module dedected a order and what the orders data is
 
-Serial output:
+SPI output:
+
+- The trachking id linked to the new order
+
+For the communication between the Arduio and the central System imusing Serial.
+Serial input:
 
 - The tracking id linked to the new order
 
-Snap-7 Outputs:
+Serial output:
 
-- Updates the current location to the plc
+- if the arduino is started up correctly sends a signal
+- When a new order is dedected and what the tag id is of that case for the order
+- When an order is detected in the procces and where
 
-## PLC.py
+## ~/MFRC522/...
 
-Comunicates between the Siemens PLC and the database using Snap7-python communication methode.
-
-Snap-7 inputs:
-
-- Checks if the PLC is started up and is running correctly
-- Checks if the PLC is ready for a new order
-
-Snap-7 Outputs:
-
-- Upload the active* order to the plc
-
-
-*not finished or not started order
+This folder is the modified library for the Arduino MFRC522 RFID modules. The only thing i changed is the the Communication frequenctie to use the spi communication over longer distances (±10m).
