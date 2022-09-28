@@ -1,17 +1,41 @@
-# Snoep distributiecentrum
-Eindwerk van het middelbaar gemaakt in 
-TSM Mechelen
-2021-2022 6EM
-## Doel van het project
-Aan de hand van RFID je bestelling snoep kunnen volgen doorheen het snoepdistributiecentrum en deze vervolgens weergeven op een web pagina.
-## Logica
-1. Gebruiker plaatst bestelling op website   
-2. Word opgelsagen in database (json map)  
-3. Indien plc opgestart en klaar voor bestelling word deze geupload naar de plc
-4. Plc start bestelling (groot of klein bakje)
-5. indine bakje voor 1ste RFID module kom
-6. Tag word leeg gemaakt en nieuwe bestelling uit database word hierop weg geschreven
-7. Website word geupdate dat de bestelling in het procces zit en de tag id + locatie word geupdate op plc
-8. Besteling komt voorbij 2de rfid module 
-9. Website word geupdate met de locatie + locatie word geupdate op plc
-10. ...
+# Python
+
+This part is made with python due to my previouse experience in python and the posiabliltyes to comunicate with Arduino and PLC.
+
+## Main.py
+
+Usses threading to run file Aruino.py and PLC.py simultaneously.
+
+## Arduino.py
+
+Comunicates between the Arduino and the Json database using serial communication methode. It also communicates a little bit between the database and the plc using Snap7-python comunication methode.
+
+Serial input:
+
+- Checks if the arduino is started up correctly
+- When a new order is dedected and what the tag id is of that case for the order
+- When an order is detected in the procces and where
+
+Serial output:
+
+- The tracking id linked to the new order
+
+Snap-7 Outputs:
+
+- Updates the current location to the plc
+
+## PLC.py
+
+Comunicates between the Siemens PLC and the database using Snap7-python communication methode.
+
+Snap-7 inputs:
+
+- Checks if the PLC is started up and is running correctly
+- Checks if the PLC is ready for a new order
+
+Snap-7 Outputs:
+
+- Upload the active* order to the plc
+
+
+*not finished or not started order
