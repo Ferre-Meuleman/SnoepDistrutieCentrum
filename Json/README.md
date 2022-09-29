@@ -11,7 +11,16 @@ The data in these files is changed multiple times during this process.
 ### This is an example file
 ```yaml
 {
-   "this-json": "looks awesome..."
+    "orderID": 1,
+    "FirstName": "Your firsntame",
+    "LastName": "Your lastname",
+    "R": 1,
+    "G": 0,
+    "B": 0,
+    "Big_Small": 0,
+    "Location": 0,
+    "CardID": "",
+    "TrackingID": "vtjRoF"
 }
 ```
 
